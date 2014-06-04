@@ -39,8 +39,15 @@ angular.module('myApp.controllers', [])
       });
       console.log($scope.films);
       $scope.formtoggle= false;
-
     };
+    $scope.delete = function(id){
+      Films.delete(id).success(function(data) {
+        $scope.films = data;
+        console.log(data);
+      });
+      
+    };
+
     
     $scope.filterprop = "film.author";
     console.log($scope.filterprop);
