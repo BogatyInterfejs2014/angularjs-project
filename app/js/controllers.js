@@ -14,7 +14,7 @@ angular.module('myApp.controllers', [])
   	Films.get().success(function(data) {
       $scope.films = data;
     });
-  	console.log($scope.films);
+  	//console.log($scope.films);
   	$scope.edit = function(film){
       $scope.formtoggle = true;
       if(film != 'new'){
@@ -34,21 +34,25 @@ angular.module('myApp.controllers', [])
     $scope.save = function(){
       var newlink = {"id":$scope.title.slice(0,6), "author":$scope.author,"title":$scope.title,"description":$scope.description};
       //Films.save({linkid: newlink.id}, newlink);
-      Films.create($scope.newlink).success(function(data) {
-            $scope.films = data; // assign our new list of todos
-          });
+      Films.create(newlink).success(function(data) {
+        $scope.films = data; // assign our new list of todos
+      });
       console.log($scope.films);
       $scope.formtoggle= false;
 
     };
     
-    $scope.filterprop = "film.channelTitle";
+    $scope.filterprop = "film.author";
+    console.log($scope.filterprop);
   }])
   .controller('DescriptionCtrl', ['$scope','$routeParams','Films',function($scope, $routeParams,Films){
   	
   	var indeks = $routeParams.id;
-  	console.log(indeks);
-    $scope.film=Films.get({linkid: $routeParams.id});
-    console.log($scope.film);
-
+  	//console.log(indeks);
+    Films.getOne(indeks).success(function(data){
+      //console.log(data);
+      $scope.film = data[0];
+      console.log($scope.film);
+    });
+    //console.log($scope.film);
   }]);

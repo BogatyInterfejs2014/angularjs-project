@@ -14,6 +14,10 @@ app.factory('Films', ['$resource','$http', function($resource,$http) {
 			get : function() {
 				return $http.get('/api/list');
 			},
+			getOne : function(id) {
+				//console.log(id);
+				return $http.get('/api/list/'+id);
+			},
 			create : function(linkdata) {
 				return $http.post('/api/list', linkdata);
 			},

@@ -35,7 +35,7 @@
 <div class="row">
 	<div class="col-md-offset-8 col-md-2">
 		<select ng-model="filterprop">
-			<option value="channelTitle">author</option>
+			<option value="author">author</option>
 			<option value="title">title</option>
 		</select>
 	</div>
@@ -58,7 +58,7 @@
       <tbody>
         <tr ng-repeat="film in films | filter:searchlink | orderBy:filterprop">
           <td>{{film.id}}</td>
-          <td>{{film.channelTitle}}</td>
+          <td>{{film.author}}</td>
           <td><a href="#/description/{{film.id}}">{{film.title}}</a></td>
           <td>
             <button type="button" class="btn btn-success" ng-click="edit(film)">EDIT</button>

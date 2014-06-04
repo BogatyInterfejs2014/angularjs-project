@@ -24,6 +24,7 @@ module.exports = function(app) {
 		Link.create({
 			id : req.body.id,
 			author: req.body.author,
+			title:req.body.title,
 			description:req.body.description
 		}, function(err, link) {
 			if (err)
@@ -56,11 +57,11 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('/api/link/:id', function(req, res) {
-
+	app.get('/api/list/:id', function(req, res) {
+		//console.log('id' + req.params.id);
 		// use mongoose to get all todos in the database
-		Link.find({id:id},function(err, link) {
-
+		Link.find({id:req.params.id},function(err, link) {
+			console.log('get one');
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err)
