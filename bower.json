@@ -1,0 +1,15 @@
+{
+  "name": "angularjs-project",
+  "description": "AngularJS application for BIU classes",
+  "version": "0.0.0",
+  "homepage": "https://github.com/BogatyInterfejs2014/angular-project",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.15",
+    "angular-resource": "~1.2.x"
+  }
+}

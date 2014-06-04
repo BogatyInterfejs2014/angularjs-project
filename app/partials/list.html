@@ -1,0 +1,73 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12">
+		<button type="button" ng-click="edit('new')" class="btn btn-success">New link</button>
+	</div>
+</div>
+<div class="row" ng-show="formtoggle">
+	<div class="col-sm-12 col-md-12">
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label for="author" class="col-md-1 control-label">Author</label>
+		    <div class="col-md-11">
+		      <input type="text" class="form-control" ng-model="author" id="author" placeholder="Author">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="title" class="col-md-1 control-label">Title</label>
+		    <div class="col-sm-11">
+		      <input type="text" class="form-control" ng-model="title" id="title" placeholder="Title">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		  	<label for="description" class="col-md-1 control-label">Description</label>
+		  	<div class="col-sm-11">
+		  		<textarea ng-model="description" class="form-control" rows="3"></textarea>
+		  	</div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-10">
+		      <button type="submit" ng-click="save()"class="btn btn-default">Add new link</button>
+		    </div>
+  		</div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-offset-8 col-md-2">
+		<select ng-model="filterprop">
+			<option value="channelTitle">author</option>
+			<option value="title">title</option>
+		</select>
+	</div>
+	<div class="col-md-2">
+		<input type="text" class="form-control" ng-model="searchlink">
+	</div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Author</td>
+          <td>Title</td>
+          <td>EDIT</td>
+          <td>DELETE</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="film in films | filter:searchlink | orderBy:filterprop">
+          <td>{{film.id}}</td>
+          <td>{{film.channelTitle}}</td>
+          <td><a href="#/description/{{film.id}}">{{film.title}}</a></td>
+          <td>
+            <button type="button" class="btn btn-success" ng-click="edit(film)">EDIT</button>
+          </td>
+          <td>
+          	<button type="button" class="btn btn-danger">DELETE</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
