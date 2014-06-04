@@ -17,7 +17,10 @@ angular.module('myApp.controllers', [])
   	//console.log($scope.films);
   	$scope.edit = function(film){
       $scope.formtoggle = true;
+      $scope.showedit=false;
+      $scope.showsave=false;
       if(film != 'new'){
+        $scope.showedit=true;
         $scope.author = ""
         $scope.title = ""
         $scope.description = "";
@@ -28,7 +31,7 @@ angular.module('myApp.controllers', [])
         $scope.author = ""
         $scope.title = ""
         $scope.description = "";
-        
+        $scope.showsave=true;
       }
     };
     $scope.save = function(){
