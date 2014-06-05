@@ -19,6 +19,12 @@
 		    </div>
 		  </div>
 		  <div class="form-group">
+		    <label for="Link" class="col-md-1 control-label">Link</label>
+		    <div class="col-sm-11">
+		      <input type="text" class="form-control" ng-model="link" id="link" placeholder="Link">
+		    </div>
+		  </div>
+		  <div class="form-group">
 		  	<label for="description" class="col-md-1 control-label">Description</label>
 		  	<div class="col-sm-11">
 		  		<textarea ng-model="description" class="form-control" rows="3"></textarea>
@@ -29,7 +35,7 @@
 		      <button type="submit" ng-click="save()" ng-show="showsave"class="btn btn-default">Add new link</button>
 		    </div>
 		    <div class="col-sm-6">
-		      <button type="submit" ng-click="editfilm(film)" ng-show="showedit" class="btn btn-default">Add new link</button>
+		      <button type="submit" ng-click="editfilm()" ng-show="showedit" class="btn btn-default">Update</button>
 		    </div>
   		</div>
 		</form>
@@ -51,7 +57,6 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <td>ID</td>
           <td>Author</td>
           <td>Title</td>
           <td>EDIT</td>
@@ -60,7 +65,6 @@
       </thead>
       <tbody>
         <tr ng-repeat="film in films | filter:searchlink | orderBy:filterprop">
-          <td>{{film.id}}</td>
           <td>{{film.author}}</td>
           <td><a href="#/description/{{film.id}}">{{film.title}}</a></td>
           <td>

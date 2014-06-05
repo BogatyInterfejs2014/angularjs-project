@@ -21,6 +21,9 @@ app.factory('Films', ['$resource','$http', function($resource,$http) {
 			create : function(linkdata) {
 				return $http.post('/api/list', linkdata);
 			},
+			update : function(linkdata) {
+				return $http.put('/api/list/' + linkdata.id, linkdata);
+			},
 			delete : function(id) {
 				return $http.delete('/api/list/' + id);
 			}

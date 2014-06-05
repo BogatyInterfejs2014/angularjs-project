@@ -25,6 +25,7 @@ module.exports = function(app) {
 			id : req.body.id,
 			author: req.body.author,
 			title:req.body.title,
+			link: req.body.link,
 			description:req.body.description
 		}, function(err, link) {
 			if (err)
@@ -54,6 +55,24 @@ module.exports = function(app) {
 					res.send(err)
 				res.json(links);
 			});
+		});
+	});
+
+	app.put('/api/list/:id', function(req, res) {
+		console.log('id' + req.params.id);
+		// use mongoose to get all todos in the database
+		console.log(req.params.author);
+		Link.update({id:req.params.id},{author:req.body.author,title:req.body.title,link:req.body.link,description:req.body.description},function(err, link) {
+			console.log('update one');
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			Link.find({},function(err, link) {
+			console.log('all');
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(link); // return all todos in JSON format
+		});
 		});
 	});
 
