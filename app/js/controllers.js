@@ -9,7 +9,7 @@
 });*/
 
 angular.module('myApp.controllers', [])
-  .controller('ListCtrl', ['$scope','Films',function($scope,Films) {
+  .controller('ListCtrl', ['$scope','Films','socket',function($scope,Films,socket) {
   	$scope.greetings = "Hello";
   	Films.get().success(function(data) {
       $scope.films = data;

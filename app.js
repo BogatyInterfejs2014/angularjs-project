@@ -14,7 +14,9 @@ var app = express();
 //app.set('view engine', 'jade');
 
 app.use(favicon());
-app.use(express.static(path.join(__dirname, 'app')));
+app.use('node_modules',express.static(__dirname + '/node_modules'));
+app.use(express.static(__dirname + '/app'));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
